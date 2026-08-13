@@ -168,6 +168,34 @@
   .hl-d{font-size:.8rem; color:var(--text-3); margin-top:.15rem;}
   @media (max-width:820px){ .about-grid{grid-template-columns:1fr;} }
 
+  /* FLOORPLAN */
+  .floorplan-img{
+    border-radius:1.25rem; overflow:hidden; border:1px solid var(--border);
+    box-shadow:0 30px 80px rgba(0,0,0,0.5); background:#f5f1e8; padding:1rem; margin-bottom:2.5rem;
+  }
+  .floorplan-img img{width:100%; display:block; border-radius:.5rem;}
+
+  /* GALLERY */
+  .gallery-group{margin-bottom:3rem;}
+  .gallery-group:last-child{margin-bottom:0;}
+  .gallery-group-title{font-size:1.15rem; font-weight:700; margin-bottom:1.25rem; color:var(--gold-soft); font-family:'Playfair Display',serif;}
+  .gallery-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:1rem;}
+  .gallery-thumb{position:relative; border-radius:1rem; overflow:hidden; border:1px solid var(--border); cursor:pointer; aspect-ratio:4/3; background:#000; transition:border-color .2s;}
+  .gallery-thumb img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s;}
+  .gallery-thumb:hover{border-color:var(--border-lit);}
+  .gallery-thumb:hover img{transform:scale(1.07);}
+
+  .lightbox{position:fixed; inset:0; z-index:300; background:rgba(6,5,4,0.94); display:none; align-items:center; justify-content:center; padding:2rem;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw; max-height:86vh; border-radius:.75rem; box-shadow:0 30px 80px rgba(0,0,0,0.6);}
+  .lightbox-btn{position:absolute; border-radius:50%; background:rgba(255,255,255,0.08); border:1px solid var(--border-lit); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s;}
+  .lightbox-btn:hover{background:rgba(255,255,255,0.18);}
+  .lightbox-close{top:1.5rem; right:1.5rem; width:44px; height:44px; font-size:1.1rem;}
+  .lightbox-nav{top:50%; transform:translateY(-50%); width:48px; height:48px; font-size:1.3rem;}
+  .lightbox-prev{left:1.5rem;}
+  .lightbox-next{right:1.5rem;}
+  @media (max-width:600px){ .lightbox-nav{width:36px; height:36px; font-size:1rem;} .lightbox-prev{left:.6rem;} .lightbox-next{right:.6rem;} .lightbox-close{top:.8rem; right:.8rem; width:36px; height:36px;} }
+
   /* ROOMS TABLE */
   .rooms-table{width:100%; border-collapse:collapse; overflow:hidden; border-radius:1rem; border:1px solid var(--border);}
   .rooms-table th{
@@ -285,9 +313,10 @@
   <div class="nav-logo">SOBHA INSIGNIA <span>· C-1063</span></div>
   <ul class="nav-links">
     <li><a href="#about">Overview</a></li>
-    <li><a href="#rooms">Layout</a></li>
+    <li><a href="#floorplan">Floorplan</a></li>
     <li><a href="#amenities">Amenities</a></li>
     <li><a href="#location">Location</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#video">Walkthrough</a></li>
     <li><a href="#brochure">Brochure</a></li>
   </ul>
@@ -307,6 +336,7 @@
     <div class="cta-row">
       <a class="btn btn-gold" href="https://wa.me/918921658093?text=Hi%2C%20I%27m%20interested%20in%20Unit%20C-1063%20at%20Sobha%20Insignia" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <a class="btn btn-outline" href="tel:+918921658093"><i class="fas fa-phone"></i> Call Now</a>
+      <a class="btn btn-outline" href="#floorplan"><i class="fas fa-draw-polygon"></i> Floorplan</a>
       <a class="btn btn-outline" href="#video"><i class="fas fa-play"></i> Watch Walkthrough</a>
       <a class="btn btn-outline" href="assets/brochure.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Brochure</a>
     </div>
@@ -360,11 +390,14 @@
   </div>
 </section>
 
-<section id="rooms">
+<section id="floorplan">
   <div class="wrap">
-    <div class="sec-eyebrow fade-in">Layout</div>
-    <h2 class="sec-title fade-in">Room&#8209;wise Dimensions</h2>
-    <p class="sec-desc fade-in">Type&#8209;C floor plan &mdash; 3&nbsp;BHK + study/home office. Full architectural plan available in the brochure below.</p>
+    <div class="sec-eyebrow fade-in">Floorplan</div>
+    <h2 class="sec-title fade-in">Type&#8209;C Floorplan &amp; Room Dimensions</h2>
+    <p class="sec-desc fade-in">Official architectural plan for Unit C&#8209;1063 &mdash; 3.5&nbsp;BHK + study/home office, from the registered Agreement for Sale.</p>
+    <div class="floorplan-img fade-in">
+      <img src="assets/floorplan-c1063.png" alt="Floor plan of Sobha Insignia Unit C-1063, Type C, 3.5 BHK, Ground to 7th Floor">
+    </div>
     <div class="rooms-wrap-scroll fade-in">
       <table class="rooms-table">
         <thead><tr><th>Room</th><th>Dimensions</th></tr></thead>
@@ -420,6 +453,58 @@
     </div>
   </div>
 </section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-eyebrow fade-in">Photo Gallery</div>
+    <h2 class="sec-title fade-in">See the Space</h2>
+    <p class="sec-desc fade-in">Real photos of Unit C&#8209;1063 and the Sobha Insignia common areas.</p>
+
+    <div class="gallery-group fade-in">
+      <div class="gallery-group-title">Indoor</div>
+      <div class="gallery-grid">
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-01.jpg" loading="lazy" alt="Unit C-1063 indoor photo 1"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-02.jpg" loading="lazy" alt="Unit C-1063 indoor photo 2"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-03.jpg" loading="lazy" alt="Unit C-1063 indoor photo 3"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-04.jpg" loading="lazy" alt="Unit C-1063 indoor photo 4"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-05.jpg" loading="lazy" alt="Unit C-1063 indoor photo 5"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-06.jpg" loading="lazy" alt="Unit C-1063 indoor photo 6"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-07.jpg" loading="lazy" alt="Unit C-1063 indoor photo 7"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-08.jpg" loading="lazy" alt="Unit C-1063 indoor photo 8"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-09.jpg" loading="lazy" alt="Unit C-1063 indoor photo 9"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-10.jpg" loading="lazy" alt="Unit C-1063 indoor photo 10"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-11.jpg" loading="lazy" alt="Unit C-1063 indoor photo 11"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-12.jpg" loading="lazy" alt="Unit C-1063 indoor photo 12"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-13.jpg" loading="lazy" alt="Unit C-1063 indoor photo 13"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-14.jpg" loading="lazy" alt="Unit C-1063 indoor photo 14"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-15.jpg" loading="lazy" alt="Unit C-1063 indoor photo 15"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-16.jpg" loading="lazy" alt="Unit C-1063 indoor photo 16"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-17.jpg" loading="lazy" alt="Unit C-1063 indoor photo 17"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-18.jpg" loading="lazy" alt="Unit C-1063 indoor photo 18"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-19.jpg" loading="lazy" alt="Unit C-1063 indoor photo 19"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-20.jpg" loading="lazy" alt="Unit C-1063 indoor photo 20"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/indoor/indoor-21.jpg" loading="lazy" alt="Unit C-1063 indoor photo 21"></div>
+      </div>
+    </div>
+
+    <div class="gallery-group fade-in">
+      <div class="gallery-group-title">Common Areas</div>
+      <div class="gallery-grid">
+        <div class="gallery-thumb"><img src="assets/gallery/common/common-01.jpg" loading="lazy" alt="Sobha Insignia common area photo 1"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/common/common-02.jpg" loading="lazy" alt="Sobha Insignia common area photo 2"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/common/common-03.jpg" loading="lazy" alt="Sobha Insignia common area photo 3"></div>
+        <div class="gallery-thumb"><img src="assets/gallery/common/common-04.jpg" loading="lazy" alt="Sobha Insignia common area photo 4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-btn lightbox-close" id="lightboxClose"><i class="fas fa-xmark"></i></div>
+  <div class="lightbox-btn lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></div>
+  <img id="lightboxImg" src="" alt="Enlarged photo">
+  <div class="lightbox-btn lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></div>
+</div>
 
 <section id="specs">
   <div class="wrap">
@@ -560,6 +645,36 @@
 
   fvWrap.addEventListener('click', () => {
     document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  const galleryImgs = Array.from(document.querySelectorAll('.gallery-thumb img'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  let lbIndex = 0;
+
+  function openLightbox(i) {
+    lbIndex = i;
+    lightboxImg.src = galleryImgs[i].src;
+    lightbox.classList.add('open');
+  }
+  function closeLightbox() { lightbox.classList.remove('open'); }
+  function showDelta(d) {
+    lbIndex = (lbIndex + d + galleryImgs.length) % galleryImgs.length;
+    lightboxImg.src = galleryImgs[lbIndex].src;
+  }
+
+  galleryImgs.forEach((img, i) => {
+    img.closest('.gallery-thumb').addEventListener('click', () => openLightbox(i));
+  });
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', () => showDelta(-1));
+  document.getElementById('lightboxNext').addEventListener('click', () => showDelta(1));
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showDelta(-1);
+    if (e.key === 'ArrowRight') showDelta(1);
   });
 </script>
 

@@ -246,6 +246,33 @@
     display:flex; align-items:center; justify-content:center; font-size:1.5rem;
     box-shadow:0 10px 30px rgba(37,211,102,0.4); text-decoration:none;
   }
+
+  .floating-video{
+    position:fixed; top:5.25rem; right:1.5rem; z-index:150;
+    width:260px; border-radius:1rem; overflow:hidden; background:#000;
+    border:1px solid var(--border-lit);
+    box-shadow:0 20px 50px rgba(0,0,0,0.55);
+    cursor:pointer;
+    animation:fv-in .5s ease;
+  }
+  @keyframes fv-in{ from{opacity:0; transform:translateY(-14px);} to{opacity:1; transform:translateY(0);} }
+  .floating-video video{width:100%; display:block; aspect-ratio:16/9; object-fit:cover;}
+  .fv-label{
+    position:absolute; top:.5rem; left:.5rem; z-index:2;
+    background:rgba(0,0,0,0.55); color:var(--gold-soft);
+    font-size:.6rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    padding:.3rem .55rem; border-radius:.4rem; pointer-events:none;
+  }
+  .fv-btn{
+    position:absolute; z-index:2; width:28px; height:28px; border-radius:50%;
+    background:rgba(0,0,0,0.6); color:#fff; border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:.85rem;
+    transition:background .2s;
+  }
+  .fv-btn:hover{background:rgba(0,0,0,0.85);}
+  .fv-close{top:.4rem; right:.4rem;}
+  .fv-mute{bottom:.5rem; right:.5rem;}
+  @media (max-width:600px){ .floating-video{width:150px; top:4.35rem; right:.75rem;} .fv-btn{width:22px; height:22px; font-size:.7rem;} }
 </style>
 </head>
 <body>
@@ -491,6 +518,15 @@
 
 <a class="float-cta" href="https://wa.me/918921658093?text=Hi%2C%20I%27m%20interested%20in%20Unit%20C-1063%20at%20Sobha%20Insignia" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
+<div class="floating-video" id="floatingVideo" title="Watch full walkthrough">
+  <div class="fv-label">Walkthrough</div>
+  <button class="fv-btn fv-close" id="fvClose" aria-label="Close video"><i class="fas fa-xmark"></i></button>
+  <video id="fvVideo" autoplay muted loop playsinline preload="auto">
+    <source src="assets/video.mp4" type="video/mp4">
+  </video>
+  <button class="fv-btn fv-mute" id="fvMute" aria-label="Unmute video"><i class="fas fa-volume-xmark"></i></button>
+</div>
+
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -498,6 +534,29 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const fvWrap = document.getElementById('floatingVideo');
+  const fvVideo = document.getElementById('fvVideo');
+  const fvClose = document.getElementById('fvClose');
+  const fvMute = document.getElementById('fvMute');
+
+  fvVideo.play().catch(() => {});
+
+  fvMute.addEventListener('click', (e) => {
+    e.stopPropagation();
+    fvVideo.muted = !fvVideo.muted;
+    fvMute.innerHTML = fvVideo.muted ? '<i class="fas fa-volume-xmark"></i>' : '<i class="fas fa-volume-high"></i>';
+  });
+
+  fvClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    fvVideo.pause();
+    fvWrap.remove();
+  });
+
+  fvWrap.addEventListener('click', () => {
+    document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
+  });
 </script>
 
 </body>

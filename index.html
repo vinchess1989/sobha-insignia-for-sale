@@ -307,9 +307,15 @@
   .fv-close{top:.5rem; right:.5rem;}
   .fv-mute{bottom:.6rem; right:.6rem;}
   @media (max-width:600px){
-    .floating-video{width:min(450px, 88vw); top:4.35rem; right:.75rem;}
-    .fv-btn{width:28px; height:28px; font-size:.85rem;}
-    .fv-label{font-size:.65rem; padding:.3rem .55rem;}
+    .floating-video{
+      width:34vw; max-width:160px; min-width:112px;
+      top:auto; bottom:6rem; right:.75rem;
+      border-radius:.65rem;
+    }
+    .fv-btn{width:22px; height:22px; font-size:.68rem;}
+    .fv-close{top:.35rem; right:.35rem;}
+    .fv-mute{bottom:.35rem; right:.35rem;}
+    .fv-label{display:none;}
   }
 </style>
 </head>

@@ -171,15 +171,42 @@
   /* FLOORPLAN */
   .floorplan-img{
     border-radius:1.25rem; overflow:hidden; border:1px solid var(--border);
-    box-shadow:0 30px 80px rgba(0,0,0,0.5); background:#f5f1e8; padding:1rem; margin-bottom:2.5rem;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5); background:#f5f1e8; padding:1rem; margin-bottom:.85rem;
   }
   .floorplan-img img{width:100%; display:block; border-radius:.5rem;}
   .floorplan-hint{
     display:flex; align-items:center; gap:.5rem;
-    font-size:.8rem; color:var(--text-3); margin-bottom:1rem;
+    font-size:.8rem; color:var(--text-3); margin-bottom:1.5rem;
   }
   .floorplan-hint i{color:var(--gold-soft);}
   .floorplan-stage{position:relative;}
+  .plain-floorplan-link{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size:.78rem; font-weight:500; color:var(--text-2); text-decoration:none;
+    transition:color .2s;
+  }
+  .plain-floorplan-link:hover{color:var(--gold-soft);}
+  .plain-floorplan-link i{color:var(--gold-soft); font-size:.75rem;}
+
+  .fp-video-grid{
+    display:grid; grid-template-columns:1.25fr 1fr; gap:2.25rem; align-items:start;
+    margin-bottom:2.75rem;
+  }
+  .video-col{position:sticky; top:5.5rem;}
+  .video-col-label{
+    display:flex; align-items:center; gap:.5rem;
+    font-size:.82rem; font-weight:700; letter-spacing:.03em;
+    color:var(--gold-soft); margin-bottom:.85rem;
+  }
+  .video-col .video-wrap{
+    border-radius:1.5rem; overflow:hidden; border:1px solid var(--border);
+    box-shadow:0 30px 80px rgba(0,0,0,0.5); aspect-ratio:16/9;
+  }
+  .video-col .video-wrap iframe{width:100%; height:100%;}
+  @media (max-width:980px){
+    .fp-video-grid{grid-template-columns:1fr;}
+    .video-col{position:static;}
+  }
   .fp-hotspot{
     position:absolute; border-radius:.5rem;
     background:rgba(212,175,55,0); border:1px solid rgba(212,175,55,0);
@@ -433,27 +460,41 @@
     <div class="sec-eyebrow fade-in">Floorplan</div>
     <h2 class="sec-title fade-in">Type&#8209;C Floorplan &amp; Room Dimensions</h2>
     <p class="sec-desc fade-in">Official architectural plan &mdash; 3.5&nbsp;BHK + study/home office, from the registered Agreement for Sale.</p>
-    <p class="floorplan-hint fade-in"><i class="fas fa-circle-play"></i> Click a room below to jump to that part of the demo walkthrough video.</p>
-    <div class="floorplan-img fade-in">
-      <div class="floorplan-stage" id="floorplanStage">
-        <img src="assets/floorplan.png" alt="Floor plan of Sobha Insignia unit, Type C, 3.5 BHK, Ground to 7th Floor">
-        <button class="fp-hotspot" style="left:14.0%;top:16.72%;width:9.25%;height:20.61%" data-time="320" aria-label="Bath (Bedroom 2)"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bath &middot; BR2</span></button>
-        <button class="fp-hotspot" style="left:16.0%;top:16.72%;width:15.0%;height:21.77%" data-time="308" aria-label="Bedroom 2"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bedroom 2</span></button>
-        <button class="fp-hotspot" style="left:34.25%;top:16.72%;width:14.0%;height:8.94%" data-time="170" aria-label="Balcony, Living Room"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Balcony &middot; Living</span></button>
-        <button class="fp-hotspot" style="left:48.25%;top:16.72%;width:9.75%;height:14.39%" data-time="215" aria-label="Utility"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Utility</span></button>
-        <button class="fp-hotspot" style="left:58.0%;top:16.72%;width:10.0%;height:14.39%" data-time="245" aria-label="Common Bath"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Common Bath</span></button>
-        <button class="fp-hotspot" style="left:68.0%;top:16.72%;width:13.5%;height:21.77%" data-time="255" aria-label="Bedroom 3"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bedroom 3</span></button>
-        <button class="fp-hotspot" style="left:81.5%;top:16.72%;width:9.5%;height:14.39%" data-time="430" aria-label="Bath, Master Bedroom"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bath &middot; Master</span></button>
-        <button class="fp-hotspot" style="left:14.0%;top:38.49%;width:17.0%;height:15.94%" data-time="150" aria-label="Study / Home Office"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Study</span></button>
-        <button class="fp-hotspot" style="left:34.25%;top:25.66%;width:14.0%;height:25.66%" data-time="140" aria-label="Living Room"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Living Room</span></button>
-        <button class="fp-hotspot" style="left:48.25%;top:31.10%;width:9.75%;height:14.0%" data-time="198" aria-label="Kitchen"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Kitchen</span></button>
-        <button class="fp-hotspot" style="left:81.5%;top:31.10%;width:9.5%;height:14.0%" data-time="418" aria-label="Walk-in Closet"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Walk-in Closet</span></button>
-        <button class="fp-hotspot" style="left:31.0%;top:50.93%;width:10.5%;height:10.5%" data-time="128" aria-label="Foyer"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Foyer</span></button>
-        <button class="fp-hotspot" style="left:48.25%;top:45.10%;width:16.75%;height:16.33%" data-time="160" aria-label="Dining"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Dining</span></button>
-        <button class="fp-hotspot" style="left:65.0%;top:45.10%;width:16.5%;height:16.33%" data-time="390" aria-label="Master Bedroom"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Master Bedroom</span></button>
-        <button class="fp-hotspot" style="left:81.5%;top:45.10%;width:9.5%;height:16.33%" data-time="400" aria-label="Balcony, Master Bedroom"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Balcony &middot; Master</span></button>
+    <p class="floorplan-hint fade-in"><i class="fas fa-circle-play"></i> Click a room to jump the demo walkthrough video to that part of the house.</p>
+
+    <div class="fp-video-grid">
+      <div class="floorplan-col fade-in">
+        <div class="floorplan-img">
+          <div class="floorplan-stage" id="floorplanStage">
+            <img src="assets/floorplan.png" alt="Floor plan of Sobha Insignia unit, Type C, 3.5 BHK, Ground to 7th Floor">
+            <button class="fp-hotspot" style="left:14.0%;top:16.72%;width:9.25%;height:20.61%" data-time="320" aria-label="Bath (Bedroom 2)"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bath &middot; BR2</span></button>
+            <button class="fp-hotspot" style="left:16.0%;top:16.72%;width:15.0%;height:21.77%" data-time="308" aria-label="Bedroom 2"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bedroom 2</span></button>
+            <button class="fp-hotspot" style="left:34.25%;top:16.72%;width:14.0%;height:8.94%" data-time="170" aria-label="Balcony, Living Room"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Balcony &middot; Living</span></button>
+            <button class="fp-hotspot" style="left:48.25%;top:16.72%;width:9.75%;height:14.39%" data-time="215" aria-label="Utility"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Utility</span></button>
+            <button class="fp-hotspot" style="left:58.0%;top:16.72%;width:10.0%;height:14.39%" data-time="245" aria-label="Common Bath"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Common Bath</span></button>
+            <button class="fp-hotspot" style="left:68.0%;top:16.72%;width:13.5%;height:21.77%" data-time="255" aria-label="Bedroom 3"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bedroom 3</span></button>
+            <button class="fp-hotspot" style="left:81.5%;top:16.72%;width:9.5%;height:14.39%" data-time="430" aria-label="Bath, Master Bedroom"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Bath &middot; Master</span></button>
+            <button class="fp-hotspot" style="left:14.0%;top:38.49%;width:17.0%;height:15.94%" data-time="150" aria-label="Study / Home Office"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Study</span></button>
+            <button class="fp-hotspot" style="left:34.25%;top:25.66%;width:14.0%;height:25.66%" data-time="140" aria-label="Living Room"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Living Room</span></button>
+            <button class="fp-hotspot" style="left:48.25%;top:31.10%;width:9.75%;height:14.0%" data-time="198" aria-label="Kitchen"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Kitchen</span></button>
+            <button class="fp-hotspot" style="left:81.5%;top:31.10%;width:9.5%;height:14.0%" data-time="418" aria-label="Walk-in Closet"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Walk-in Closet</span></button>
+            <button class="fp-hotspot" style="left:31.0%;top:50.93%;width:10.5%;height:10.5%" data-time="128" aria-label="Foyer"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Foyer</span></button>
+            <button class="fp-hotspot" style="left:48.25%;top:45.10%;width:16.75%;height:16.33%" data-time="160" aria-label="Dining"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Dining</span></button>
+            <button class="fp-hotspot" style="left:65.0%;top:45.10%;width:16.5%;height:16.33%" data-time="390" aria-label="Master Bedroom"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Master Bedroom</span></button>
+            <button class="fp-hotspot" style="left:81.5%;top:45.10%;width:9.5%;height:16.33%" data-time="400" aria-label="Balcony, Master Bedroom"><span class="fp-hotspot-label"><i class="fas fa-play"></i>Balcony &middot; Master</span></button>
+          </div>
+        </div>
+        <a class="plain-floorplan-link" href="assets/floorplan.png" target="_blank" rel="noopener"><i class="fas fa-up-right-and-down-left-from-center"></i> View plain floorplan (full size, no hotspots)</a>
+      </div>
+
+      <div class="video-col" id="demo-unit">
+        <div class="video-col-label"><i class="fas fa-video"></i> Demo House Walkthrough</div>
+        <div class="video-wrap">
+          <iframe id="demoVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Ct0Kr643H-4?start=121&enablejsapi=1" title="Demo house walkthrough video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 1.5rem; display: block;"></iframe>
+        </div>
       </div>
     </div>
+
     <div class="rooms-wrap-scroll fade-in">
       <table class="rooms-table">
         <thead><tr><th>Room</th><th>Dimensions</th></tr></thead>
@@ -614,17 +655,6 @@
     <p class="sec-desc fade-in">Official project walkthrough from Sobha Limited.</p>
     <div class="video-wrap fade-in">
       <iframe width="100%" height="600" src="https://www.youtube.com/embed/ZPbH7YxCH7U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 1.5rem; display: block;"></iframe>
-    </div>
-  </div>
-</section>
-
-<section id="demo-unit">
-  <div class="wrap">
-    <div class="sec-eyebrow fade-in">Demo Unit</div>
-    <h2 class="sec-title fade-in">Demo House Walkthrough</h2>
-    <p class="sec-desc fade-in">Walkthrough of the 3.5 BHK layout.</p>
-    <div class="video-wrap fade-in">
-      <iframe id="demoVideo" width="100%" height="600" src="https://www.youtube.com/embed/Ct0Kr643H-4?start=121&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 1.5rem; display: block;"></iframe>
     </div>
   </div>
 </section>

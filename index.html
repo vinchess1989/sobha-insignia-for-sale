@@ -135,7 +135,7 @@
   @media (max-width:900px){ .stats-strip{grid-template-columns:repeat(3,1fr);} }
   @media (max-width:520px){ .stats-strip{grid-template-columns:repeat(2,1fr);} }
 
-  section{padding:6rem 2rem; position:relative;}
+  section{padding:6rem 2rem; position:relative; scroll-margin-top:4.5rem;}
   section:nth-of-type(even){background:var(--bg-1);}
   .wrap{max-width:1040px; margin:0 auto;}
   .sec-eyebrow{font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.6rem;}
@@ -173,7 +173,7 @@
     border-radius:1.25rem; overflow:hidden; border:1px solid var(--border);
     box-shadow:0 30px 80px rgba(0,0,0,0.5); background:#f5f1e8; padding:1rem; margin-bottom:.85rem;
   }
-  .floorplan-img img{width:100%; display:block; border-radius:.5rem;}
+  .floorplan-img img{width:100%; display:block; border-radius:.5rem; aspect-ratio:2995/1926;}
   .floorplan-hint{
     display:flex; align-items:center; gap:.5rem;
     font-size:.8rem; color:var(--text-3); margin-bottom:1.5rem;
@@ -190,8 +190,9 @@
 
   .fp-video-grid{
     display:grid; grid-template-columns:1.25fr 1fr; gap:2.25rem; align-items:start;
-    margin-bottom:2.75rem;
+    margin-bottom:2.75rem; transition:grid-template-columns .4s ease;
   }
+  .fp-video-grid.expanded{grid-template-columns:150px 1fr;}
   .video-col{position:sticky; top:5.5rem;}
   .video-col-label{
     display:flex; align-items:center; gap:.5rem;
@@ -205,8 +206,23 @@
   .video-col .video-wrap iframe{width:100%; height:100%;}
   @media (max-width:980px){
     .fp-video-grid{grid-template-columns:1fr;}
+    .fp-video-grid.expanded{grid-template-columns:1fr;}
     .video-col{position:static;}
   }
+
+  .floorplan-col{transition:opacity .2s;}
+  .fp-video-grid.expanded .floorplan-col{cursor:pointer;}
+  .fp-video-grid.expanded .floorplan-hint,
+  .fp-video-grid.expanded .plain-floorplan-link{display:none;}
+  .fp-video-grid.expanded .floorplan-img{padding:.4rem; margin-bottom:.5rem;}
+  .fp-video-grid.expanded .fp-hotspot{pointer-events:none;}
+  .floorplan-back-badge{
+    display:none; align-items:center; justify-content:center; gap:.4rem;
+    font-size:.68rem; font-weight:700; letter-spacing:.02em; color:var(--gold-soft);
+    background:rgba(212,175,55,0.08); border:1px solid var(--border-lit);
+    padding:.5rem .6rem; border-radius:.6rem; text-align:center;
+  }
+  .fp-video-grid.expanded .floorplan-back-badge{display:flex;}
   .fp-hotspot{
     position:absolute; border-radius:.5rem;
     background:rgba(212,175,55,0); border:1px solid rgba(212,175,55,0);
@@ -462,8 +478,8 @@
     <p class="sec-desc fade-in">Official architectural plan &mdash; 3.5&nbsp;BHK + study/home office, from the registered Agreement for Sale.</p>
     <p class="floorplan-hint fade-in"><i class="fas fa-circle-play"></i> Click a room to jump the demo walkthrough video to that part of the house.</p>
 
-    <div class="fp-video-grid">
-      <div class="floorplan-col fade-in">
+    <div class="fp-video-grid" id="fpVideoGrid">
+      <div class="floorplan-col fade-in" id="floorplanCol">
         <div class="floorplan-img">
           <div class="floorplan-stage" id="floorplanStage">
             <img src="assets/floorplan.png" alt="Floor plan of Sobha Insignia unit, Type C, 3.5 BHK, Ground to 7th Floor">
@@ -485,6 +501,7 @@
           </div>
         </div>
         <a class="plain-floorplan-link" href="assets/floorplan.png" target="_blank" rel="noopener"><i class="fas fa-up-right-and-down-left-from-center"></i> View plain floorplan (full size, no hotspots)</a>
+        <div class="floorplan-back-badge" id="floorplanBackBadge"><i class="fas fa-arrow-left"></i> Back to full floorplan</div>
       </div>
 
       <div class="video-col" id="demo-unit">
@@ -788,14 +805,26 @@
     }
   }
 
+  const fpVideoGrid = document.getElementById('fpVideoGrid');
+  const floorplanCol = document.getElementById('floorplanCol');
+
+  function expandVideo() { if (fpVideoGrid) fpVideoGrid.classList.add('expanded'); }
+  function collapseVideo() { if (fpVideoGrid) fpVideoGrid.classList.remove('expanded'); }
+
   document.querySelectorAll('.fp-hotspot').forEach(hotspot => {
-    hotspot.addEventListener('click', () => {
+    hotspot.addEventListener('click', (e) => {
+      e.stopPropagation();
       const seconds = parseInt(hotspot.dataset.time, 10);
-      const demoSec = document.getElementById('demo-unit');
-      if (demoSec) demoSec.scrollIntoView({ behavior: 'smooth' });
+      expandVideo();
       seekDemo(seconds);
     });
   });
+
+  if (floorplanCol) {
+    floorplanCol.addEventListener('click', () => {
+      if (fpVideoGrid && fpVideoGrid.classList.contains('expanded')) collapseVideo();
+    });
+  }
 
   const galleryImgs = Array.from(document.querySelectorAll('.gallery-thumb img'));
   const lightbox = document.getElementById('lightbox');

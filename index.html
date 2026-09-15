@@ -67,6 +67,31 @@
   }
   @media (max-width:820px){ .nav-links{display:none;} }
 
+  .nav-toggle{
+    display:none; background:none; border:none; color:var(--text-1); font-size:1.2rem;
+    cursor:pointer; padding:.3rem .5rem; margin-left:.75rem; line-height:1;
+  }
+  @media (max-width:820px){ .nav-toggle{display:inline-flex; align-items:center;} }
+
+  .mobile-menu{
+    position:fixed; top:0; left:0; right:0; z-index:99;
+    background:rgba(10,9,8,0.97); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    padding-top:4.2rem;
+    transform:translateY(-110%); transition:transform .3s ease;
+    display:none;
+  }
+  .mobile-menu ul{list-style:none; display:flex; flex-direction:column; padding:.5rem 2rem 1.5rem;}
+  .mobile-menu a{
+    display:block; padding:.9rem 0; color:var(--text-2); text-decoration:none;
+    font-size:.95rem; font-weight:500; border-bottom:1px solid var(--border);
+  }
+  .mobile-menu a:hover, .mobile-menu a:active{color:var(--gold-soft);}
+  @media (max-width:820px){
+    .mobile-menu{display:block;}
+    .mobile-menu.open{transform:translateY(0);}
+  }
+
   .hero{
     min-height:100vh;
     display:flex; align-items:center; justify-content:center;
@@ -406,7 +431,21 @@
     <li><a href="#brochure">Brochure</a></li>
   </ul>
   <a class="nav-cta" href="https://wa.me/918921658093?text=Hi%2C%20I%27m%20interested%20in%20your%20listing%20at%20Sobha%20Insignia" target="_blank"><i class="fab fa-whatsapp"></i> Enquire</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#about">Overview</a></li>
+    <li><a href="#floorplan">Floorplan</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#walkthrough">Project Walkthrough</a></li>
+    <li><a href="#demo-unit">Demo Walkthrough</a></li>
+    <li><a href="#brochure">Brochure</a></li>
+  </ul>
+</div>
 
 <section class="hero">
   <div class="hero-inner">
@@ -834,6 +873,24 @@
     floorplanCol.addEventListener('click', () => {
       if (fpVideoGrid && fpVideoGrid.classList.contains('expanded')) collapseVideo();
     });
+  }
+
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (navToggle && mobileMenu) {
+    const closeMobileMenu = () => {
+      mobileMenu.classList.remove('open');
+      navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      navToggle.setAttribute('aria-label', 'Open menu');
+      navToggle.setAttribute('aria-expanded', 'false');
+    };
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      navToggle.innerHTML = isOpen ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+      navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
   }
 
   document.querySelectorAll('a[href="#demo-unit"]').forEach(link => {

@@ -47,9 +47,9 @@
 
   nav{
     position:fixed; top:0; width:100%; z-index:100;
-    padding:1rem 2.5rem;
+    padding:.8rem 2.2rem;
     display:flex; justify-content:space-between; align-items:center;
-    background:rgba(10,9,8,0.82);
+    background:rgba(10,9,8,0.88);
     backdrop-filter:blur(20px);
     border-bottom:1px solid var(--border);
   }
@@ -58,8 +58,8 @@
     letter-spacing:0.04em; color:var(--gold-soft);
   }
   .nav-logo span{color:var(--text-2); font-weight:400; font-size:0.85rem;}
-  .nav-links{display:flex; gap:2rem; list-style:none;}
-  .nav-links a{color:var(--text-2); text-decoration:none; font-size:0.82rem; font-weight:500; letter-spacing:0.03em; transition:color .2s;}
+  .nav-links{display:flex; gap:1.35rem; list-style:none;}
+  .nav-links a{color:var(--text-2); text-decoration:none; font-size:0.82rem; font-weight:500; letter-spacing:0.02em; transition:color .2s; white-space:nowrap;}
   .nav-links a:hover{color:var(--gold-soft);}
   .nav-cta{
     display:inline-flex; align-items:center; gap:.5rem;
@@ -69,13 +69,14 @@
     flex-shrink:0; white-space:nowrap;
   }
   @media (max-width:1180px){
-    nav{padding:1rem 1.5rem;}
-    .nav-links{gap:1.1rem;}
-    .nav-links a{font-size:.76rem; letter-spacing:.01em;}
-  }
-  @media (max-width:880px){
+    nav{padding:.75rem 1.25rem;}
     .nav-links{gap:.85rem;}
-    .nav-cta{padding:.55rem .7rem;}
+    .nav-links a{font-size:.74rem; letter-spacing:.01em;}
+  }
+  @media (max-width:960px){
+    .nav-links{gap:.65rem;}
+    .nav-links a{font-size:.7rem;}
+    .nav-cta{padding:.5rem .7rem;}
     .nav-cta-text{display:none;}
   }
 
@@ -147,12 +148,12 @@
   @media (max-width:900px){ .stats-strip{grid-template-columns:repeat(3,1fr);} }
   @media (max-width:520px){ .stats-strip{grid-template-columns:repeat(2,1fr);} }
 
-  section{padding:6rem 2rem; position:relative; scroll-margin-top:4.5rem;}
+  section{padding:2.25rem 2rem 3.5rem; position:relative; scroll-margin-top:3.6rem;}
   section:nth-of-type(even){background:var(--bg-1);}
   .wrap{max-width:1040px; margin:0 auto;}
-  .sec-eyebrow{font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.6rem;}
-  .sec-title{font-size:clamp(1.7rem,3.5vw,2.3rem); font-weight:700; margin-bottom:1.25rem;}
-  .sec-desc{color:var(--text-2); font-size:.98rem; max-width:680px; margin-bottom:3rem; line-height:1.85;}
+  .sec-eyebrow{font-size:.7rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.35rem;}
+  .sec-title{font-size:clamp(1.55rem,2.8vw,2.15rem); font-weight:700; margin-bottom:.65rem; line-height:1.2;}
+  .sec-desc{color:var(--text-2); font-size:.92rem; max-width:680px; margin-bottom:1.5rem; line-height:1.6;}
 
   /* ABOUT */
   .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:3rem; align-items:start;}
@@ -350,22 +351,25 @@
   .rooms-table td:first-child{color:var(--text-1); font-weight:500;}
 
   /* AMENITIES */
-  .amen-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:1.1rem;}
+  .amen-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:.9rem;}
   .amen-card{
-    background:var(--bg-card); border:1px solid var(--border); border-radius:1.1rem;
-    padding:1.5rem; text-align:center; transition:all .2s;
+    background:var(--bg-card); border:1px solid var(--border); border-radius:1rem;
+    padding:1.1rem .8rem; text-align:center; transition:all .2s;
   }
   .amen-card:hover{border-color:var(--border-lit); transform:translateY(-3px);}
-  .amen-icon{font-size:1.6rem; color:var(--gold-soft); margin-bottom:.8rem;}
-  .amen-name{font-size:.85rem; font-weight:600;}
+  .amen-icon{font-size:1.35rem; color:var(--gold-soft); margin-bottom:.5rem;}
+  .amen-name{font-size:.82rem; font-weight:600;}
 
   /* SPECS */
-  .specs-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.25rem;}
-  .spec-card{background:var(--bg-card); border:1px solid var(--border); border-radius:1.25rem; padding:1.6rem;}
+  .specs-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.15rem;}
+  @media (min-width:960px){
+    .specs-grid{grid-template-columns:repeat(4,1fr); gap:1rem;}
+  }
+  .spec-card{background:var(--bg-card); border:1px solid var(--border); border-radius:1.15rem; padding:1.35rem;}
   .spec-card:hover{border-color:var(--border-lit);}
-  .spec-name{font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.9rem;}
-  .spec-ul{list-style:none; display:flex; flex-direction:column; gap:.55rem;}
-  .spec-ul li{font-size:.86rem; color:var(--text-2); padding-left:1.1rem; position:relative;}
+  .spec-name{font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.75rem;}
+  .spec-ul{list-style:none; display:flex; flex-direction:column; gap:.45rem;}
+  .spec-ul li{font-size:.84rem; color:var(--text-2); padding-left:1.1rem; position:relative;}
   .spec-ul li::before{content:'—'; position:absolute; left:0; color:var(--gold-soft);}
 
   /* VIDEO */
@@ -377,18 +381,19 @@
 
   /* BROCHURE */
   .brochure-panel{
-    display:flex; gap:2rem; align-items:center; flex-wrap:wrap;
-    background:var(--bg-card); border:1px solid var(--border); border-radius:1.5rem; padding:2.5rem;
+    display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;
+    background:var(--bg-card); border:1px solid var(--border-lit); border-radius:1.25rem;
+    padding:1.25rem 1.75rem; margin-top:1.5rem;
   }
   .brochure-icon{
-    width:90px; height:90px; border-radius:1.25rem; flex-shrink:0;
+    width:64px; height:64px; border-radius:1rem; flex-shrink:0;
     background:linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.03));
     border:1px solid var(--border-lit);
-    display:flex; align-items:center; justify-content:center; font-size:2.2rem; color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center; font-size:1.65rem; color:var(--gold-soft);
   }
   .brochure-text{flex:1; min-width:220px;}
-  .brochure-text h3{font-size:1.2rem; margin-bottom:.4rem;}
-  .brochure-text p{color:var(--text-3); font-size:.85rem;}
+  .brochure-text h3{font-size:1.05rem; margin-bottom:.25rem;}
+  .brochure-text p{color:var(--text-3); font-size:.82rem;}
   .brochure-actions{display:flex; gap:.75rem; flex-wrap:wrap;}
 
   /* CONTACT */
@@ -621,21 +626,31 @@
     .thumb-cap{font-size:.68rem; padding:1rem .5rem .4rem;}
     .gallery-toggle{width:100%; justify-content:center; margin-bottom:1.5rem;}
 
-    /* Contents bar ends with where to go next */
+    /* Contents bar ends with where to go next — flows naturally without overlapping chips */
     .subnav-next{
       display:inline-flex; align-items:center; gap:.35rem; flex:0 0 auto;
-      position:sticky; right:0; margin-left:auto;
-      padding:.32rem .75rem; border-radius:999px; white-space:nowrap; cursor:pointer;
-      font-family:inherit; font-size:.7rem; font-weight:700; color:var(--gold-soft);
-      background:#0a0908; border:1px solid var(--border-lit); box-shadow:-10px 0 12px #0a0908;
+      position:relative; margin-left:.5rem;
+      padding:.28rem .7rem; border-radius:999px; white-space:nowrap; cursor:pointer;
+      font-family:inherit; font-size:.68rem; font-weight:700; color:var(--gold-soft);
+      background:rgba(212,175,55,0.08); border:1px solid var(--border-lit);
       touch-action:manipulation;
     }
 
-    section{padding:1.5rem 1rem 1rem;}
+    section{
+      padding:1rem .85rem .85rem;
+      scroll-margin-top:calc(var(--app-hdr) + var(--subnav-h) + 8px);
+    }
     section:nth-of-type(even){background:transparent;}
     .sec-eyebrow{margin-bottom:.35rem;}
     .sec-title{font-size:1.45rem; margin-bottom:.75rem;}
     .sec-desc{font-size:.88rem; line-height:1.65; margin-bottom:1.25rem;}
+    #brochure{scroll-margin-top:calc(var(--app-hdr) + var(--subnav-h) + 12px);}
+
+    /* Compact Amenities on mobile so all cards and brochure fit without scrolling */
+    #amenities{padding:.85rem .85rem .75rem;}
+    #amenities .sec-eyebrow{display:none;}
+    #amenities .sec-title{font-size:1.15rem; margin-bottom:.35rem;}
+    #amenities .sec-desc{display:none;}
     .about-grid{gap:1.5rem;}
     .about-text{font-size:.9rem; line-height:1.75;}
     .about-text p:nth-child(3){display:none;}
@@ -665,16 +680,24 @@
     /* Project */
     .video-wrap{border-radius:1rem;}
     #walkthrough .video-wrap iframe{width:100%; height:auto; aspect-ratio:16/9;}
-    .amen-grid{grid-template-columns:repeat(2,1fr); gap:.6rem;}
-    .amen-card{padding:.95rem .5rem; border-radius:.85rem;}
-    .amen-icon{font-size:1.25rem; margin-bottom:.5rem;}
-    .amen-name{font-size:.78rem;}
+    .amen-grid{grid-template-columns:repeat(4,1fr); gap:.35rem; margin-bottom:.55rem;}
+    .amen-card{padding:.45rem .2rem; border-radius:.65rem;}
+    .amen-icon{font-size:.95rem; margin-bottom:.2rem;}
+    .amen-name{font-size:.62rem; line-height:1.15;}
     .specs-grid{gap:.75rem;}
     .spec-card{padding:1.15rem;}
 
-    /* Contact */
-    .brochure-panel{padding:1.25rem; gap:1rem;}
-    .brochure-icon{width:64px; height:64px; font-size:1.6rem;}
+    /* Brochure panel on mobile */
+    .brochure-panel{
+      display:flex; align-items:center; gap:.75rem; flex-wrap:nowrap;
+      padding:.6rem .85rem; border-radius:.85rem; margin-top:.45rem;
+    }
+    .brochure-icon{width:38px; height:38px; font-size:1.15rem; border-radius:.6rem; flex-shrink:0;}
+    .brochure-text{min-width:0; flex:1;}
+    .brochure-text h3{font-size:.82rem; margin-bottom:.1rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .brochure-text p{font-size:.64rem; line-height:1.3; color:var(--text-3); display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;}
+    .brochure-actions{flex-shrink:0;}
+    .brochure-actions .btn{padding:.42rem .75rem; font-size:.72rem; white-space:nowrap;}
     .contact-grid{gap:.7rem; margin-bottom:1.5rem;}
     .contact-link{min-width:0;}
     .c-val{overflow-wrap:anywhere;}
@@ -825,18 +848,18 @@
     .spec-ul{gap:.25rem;}
     .spec-ul li{font-size:.66rem; line-height:1.4;}
 
-    /* Contact: brochure and contact share one screen */
-    #contact[data-mtab].mob-active{flex:0 0 62vw; width:62vw; display:flex !important; align-items:center; padding:.4rem .5rem .4rem 1.25rem !important;}
-    #brochure[data-mtab].mob-active{flex:0 0 38vw; width:38vw; display:flex !important; align-items:center; scroll-snap-align:none; padding:.4rem 1.25rem .4rem .75rem !important;}
-    #brochure .wrap, #contact .wrap{width:100%;}
+    /* Project & Contact landscape layout */
+    #contact[data-mtab].mob-active{flex:0 0 100vw; width:100vw; display:flex !important; align-items:center; justify-content:center; padding:.4rem 2rem !important;}
+    #brochure[data-mtab].mob-active{flex:0 0 100vw; width:100vw; display:flex !important; align-items:center; justify-content:center; scroll-snap-align:start; padding:.4rem 2rem !important;}
+    #brochure .wrap, #contact .wrap{width:100%; max-width:640px;}
     #brochure .wrap > .sec-eyebrow, #brochure .wrap > .sec-title{display:none;}
-    .brochure-panel{flex-direction:column; align-items:flex-start; padding:.9rem; gap:.5rem; border-radius:1rem;}
-    .brochure-icon{width:40px; height:40px; font-size:1.1rem; border-radius:.7rem;}
+    .brochure-panel{flex-direction:row; align-items:center; padding:1.15rem 1.5rem; gap:1.25rem; border-radius:1rem;}
+    .brochure-icon{width:52px; height:52px; font-size:1.3rem; border-radius:.8rem;}
     .brochure-text{min-width:0;}
-    .brochure-text h3{font-size:.9rem;}
-    .brochure-text p{font-size:.68rem;}
+    .brochure-text h3{font-size:1rem;}
+    .brochure-text p{font-size:.72rem;}
     .brochure-actions .btn{padding:.55rem .9rem; font-size:.78rem;}
-    .contact-grid{grid-template-columns:1fr; gap:.35rem; margin-bottom:.4rem;}
+    .contact-grid{grid-template-columns:1fr 1fr; gap:.5rem; margin-bottom:.4rem;}
     .contact-link{padding:.45rem .75rem; gap:.65rem; border-radius:.8rem;}
     .c-icon{width:28px; height:28px; font-size:.8rem;}
     .c-lbl{font-size:.58rem;}
@@ -883,9 +906,10 @@
     <li><a href="#about"><span class="nav-num">1</span>At a glance</a></li>
     <li><a href="#floorplan"><span class="nav-num">2</span>Tour the home</a></li>
     <li><a href="#gallery"><span class="nav-num">3</span>Photos</a></li>
-    <li><a href="#amenities"><span class="nav-num">4</span>Project</a></li>
+    <li><a href="#amenities"><span class="nav-num">4</span>Amenities</a></li>
     <li><a href="#location"><span class="nav-num">5</span>Location</a></li>
-    <li><a href="#contact"><span class="nav-num">6</span>Visit</a></li>
+    <li><a href="#specs"><span class="nav-num">6</span>Specs</a></li>
+    <li><a href="#contact"><span class="nav-num">7</span>Visit</a></li>
   </ul>
   <a class="nav-cta" href="https://wa.me/918921658093?text=Hi%2C%20I%27m%20interested%20in%20your%20listing%20at%20Sobha%20Insignia" target="_blank" aria-label="Enquire on WhatsApp"><i class="fab fa-whatsapp"></i> <span class="nav-cta-text">Enquire</span></a>
 </nav>
@@ -1107,6 +1131,19 @@
       <div class="amen-card"><div class="amen-icon"><i class="fas fa-video"></i></div><div class="amen-name">Video Door Phone</div></div>
       <div class="amen-card"><div class="amen-icon"><i class="fas fa-shield-halved"></i></div><div class="amen-name">Intercom Security</div></div>
     </div>
+
+    <!-- Official Project Brochure inside Project Amenities -->
+    <div class="brochure-panel fade-in" id="brochure" data-page data-page-label="Brochure">
+      <div class="brochure-icon"><i class="fas fa-file-pdf"></i></div>
+      <div class="brochure-text">
+        <h3>Sobha Insignia &mdash; Official Project Brochure</h3>
+        <p>Master plan, specifications, club details, and floor dimensions from Sobha Limited.</p>
+      </div>
+      <div class="brochure-actions">
+        <a class="btn btn-gold" href="assets/brochure.pdf" target="_blank"><i class="fas fa-file-pdf"></i> View Brochure</a>
+      </div>
+    </div>
+
     <a class="next-step fade-in" href="#location">Next: check the location <i class="fas fa-arrow-right"></i></a>
   </div>
 </section>
@@ -1116,7 +1153,7 @@
     <div class="sec-eyebrow fade-in">Location</div>
     <h2 class="sec-title fade-in">Nearby Corporate Parks, Hospitals &amp; Colleges</h2>
     <p class="sec-desc fade-in">Sobha Insignia sits inside the Bellandur / Outer Ring Road tech corridor &mdash; minutes from major IT campuses, healthcare, and educational institutions.</p>
-    <div class="fade-in" style="border-radius:1.25rem; overflow:hidden; border:1px solid var(--border); box-shadow:0 30px 80px rgba(0,0,0,0.5);">
+    <div class="fade-in location-map-wrap" style="border-radius:1.25rem; overflow:hidden; border:1px solid var(--border); box-shadow:0 30px 80px rgba(0,0,0,0.5);">
       <img src="assets/location-map.png" alt="Map of Sobha Insignia and nearby corporate offices, hospitals, colleges and landmarks" style="width:100%; display:block;">
     </div>
     <a class="next-step fade-in" href="#specs">Next: what's built in <i class="fas fa-arrow-right"></i></a>
@@ -1182,23 +1219,6 @@
       </a>
     </div>
     <p class="disclaimer fade-in">Listed directly by the owner — no broker involved. Areas, specifications and amenities are as stated in the Sobha Insignia Agreement for Sale and official project brochure. Sobha Insignia is a project of Sobha Limited; this page is an independent resale listing and is not published by or affiliated with Sobha Limited.</p>
-  </div>
-</section>
-
-<section id="brochure" data-mtab="contact" data-page data-page-label="Brochure">
-  <div class="wrap">
-    <div class="sec-eyebrow fade-in">Documentation</div>
-    <h2 class="sec-title fade-in">Project Brochure</h2>
-    <div class="brochure-panel fade-in">
-      <div class="brochure-icon"><i class="fas fa-file-pdf"></i></div>
-      <div class="brochure-text">
-        <h3>Sobha Insignia — Official Brochure</h3>
-        <p>Master plan, specifications, and amenity details from Sobha Limited.</p>
-      </div>
-      <div class="brochure-actions">
-        <a class="btn btn-gold" href="assets/brochure.pdf" target="_blank"><i class="fas fa-eye"></i> View Brochure</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1357,8 +1377,8 @@
     home: 'home', about: 'home',
     plan: 'plan', floorplan: 'plan', 'demo-unit': 'plan',
     photos: 'photos', gallery: 'photos',
-    project: 'project', amenities: 'project', location: 'project', specs: 'project',
-    contact: 'contact', brochure: 'contact'
+    project: 'project', amenities: 'project', location: 'project', specs: 'project', brochure: 'project',
+    contact: 'contact'
   };
   const mobTabBtns = document.querySelectorAll('.mobile-nav-item');
 
